@@ -1,0 +1,49 @@
+<ul>
+  <li *ngFor="let image of images">
+    <!-- Have to add crossorigin attribute to get rid of canvas error "Canvas tainted by cross-origin data" -->
+    <img
+      [src]="image.url"
+      [alt]="image.title"
+      (click)="detectEdge($event, image)"
+      crossorigin="anonymous"
+    />
+  </li>
+  <li></li>
+</ul>
+
+<!-- modal overlay -->
+<div class="overlay" [class.show]="show" (click)="closeModal()"></div>
+<!-- modal -->
+<div class="modal-container" [class.show]="show">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="modal-close" (click)="closeModal()">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="column">
+            <div class="image">
+              <canvas #canvas id="canvasOutput"></canvas>
+            </div>
+          </div>
+          <div class="column">
+            <div class="image-information">
+              <p><span class="image-info-heading">Title</span> : {{ title }}</p>
+              <p>
+                <span class="image-info-heading">Posted Date</span> :
+                {{ postedDate }}
+              </p>
+              <p>
+                <span class="image-info-heading">Owner</span> : {{ ownerName }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
