@@ -1,6 +1,5 @@
 <app-header (search)="onSearch($event)"></app-header>
-<div *ngIf="images$ | async as images; else noData">
-  <app-image-container [images]="images"></app-image-container>
-</div>
-
-<ng-template #noData>Use search bar to search for the images</ng-template>
+<app-image-container
+  [images]="images"
+  (scrolled)="onScroll($event)"
+></app-image-container>

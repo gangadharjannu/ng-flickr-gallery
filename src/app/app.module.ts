@@ -7,9 +7,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ImageContainerComponent } from './image-container/image-container.component';
+import { InfiniteScrollerComponent } from './infinite-scroller/infinite-scroller.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ImageContainerComponent],
+  declarations: [AppComponent, HeaderComponent, ImageContainerComponent, InfiniteScrollerComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
