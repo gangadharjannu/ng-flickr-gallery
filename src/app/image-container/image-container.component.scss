@@ -99,17 +99,8 @@
   }
 }
 
-// masnory grid layout
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 li {
-  height: 40vh;
+  height: 150px;
   flex-grow: 1;
 }
 
@@ -122,7 +113,6 @@ img {
 }
 
 img:hover {
-  transform: scale(1.1);
   border: 1px solid #ddd;
 }
 

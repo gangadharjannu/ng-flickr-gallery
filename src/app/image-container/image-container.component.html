@@ -1,5 +1,5 @@
-<ul>
-  <li *ngFor="let image of images">
+<app-infinite-scroller (scrolled)="onScroll()">
+  <li *ngFor="let image of images; trackBy: trackByFn">
     <!-- Have to add crossorigin attribute to get rid of canvas error "Canvas tainted by cross-origin data" -->
     <img
       [src]="image.url"
@@ -8,8 +8,9 @@
       crossorigin="anonymous"
     />
   </li>
+  <!-- avoids flexbox to fill the last row -->
   <li></li>
-</ul>
+</app-infinite-scroller>
 
 <!-- modal overlay -->
 <div class="overlay" [class.show]="show" (click)="closeModal()"></div>

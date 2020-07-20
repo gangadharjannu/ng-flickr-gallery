@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  EventEmitter,
+} from '@angular/core';
 // TypeScript doesn't about cv so it complains about type. Inorder to prevent this we have to delcare a vriable of type any.
 declare var cv: any;
 
@@ -9,6 +17,7 @@ declare var cv: any;
 })
 export class ImageContainerComponent implements OnInit {
   @Input() images;
+  @Output() scrolled = new EventEmitter<boolean>();
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
 
@@ -41,7 +50,7 @@ export class ImageContainerComponent implements OnInit {
     dst.delete();
     this.title = image.title;
     this.postedDate = new Date(image.postedDate * 1000).toLocaleDateString();
-    this.ownerName = image.ownername;
+    this.ownerName = image.ownerName;
     this.showModal();
   }
 
@@ -51,5 +60,13 @@ export class ImageContainerComponent implements OnInit {
 
   showModal() {
     this.show = true;
+  }
+
+  onScroll() {
+    this.scrolled.emit();
+  }
+
+  trackByFn(index, item) {
+    return item.id;
   }
 }
